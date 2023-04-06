@@ -19,8 +19,9 @@ m.youtube.com##ytm-browse ytm-item-section-renderer ytm-thumbnail-overlay-time-s
 m.youtube.com##ytm-search ytm-thumbnail-overlay-time-status-renderer[data-style="SHORTS"]:upward(ytm-compact-video-renderer)
 m.youtube.com##ytm-single-column-watch-next-results-renderer ytm-thumbnail-overlay-time-status-renderer span:has-text(/^(0:\d\d|1:0\d)$/):upward(ytm-video-with-context-renderer)
 
-! 2023-03-30 https://www.bbc.com Annoying signin
+! Annoying nagware
 www.bbc.com##.zephr-overlay
+www.bbc.com###zephr-message
 
 ! From https://letsblock.it/filters/youtube-mixes
 www.youtube.com##ytd-browse ytd-rich-item-renderer:has(#video-title-link[href*="&start_radio=1"])
