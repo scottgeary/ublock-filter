@@ -22,6 +22,7 @@ m.youtube.com##ytm-single-column-watch-next-results-renderer ytm-thumbnail-overl
 ! Annoying nagware
 www.bbc.com##.zephr-overlay
 www.bbc.com###zephr-message
+assets.zephr.com
 
 ! From https://letsblock.it/filters/youtube-mixes
 www.youtube.com##ytd-browse ytd-rich-item-renderer:has(#video-title-link[href*="&start_radio=1"])
