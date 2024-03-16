@@ -19,6 +19,34 @@ m.youtube.com##ytm-browse ytm-item-section-renderer ytm-thumbnail-overlay-time-s
 m.youtube.com##ytm-search ytm-thumbnail-overlay-time-status-renderer[data-style="SHORTS"]:upward(ytm-compact-video-renderer)
 m.youtube.com##ytm-single-column-watch-next-results-renderer ytm-thumbnail-overlay-time-status-renderer span:has-text(/^(0:\d\d|1:0\d)$/):upward(ytm-video-with-context-renderer)
 
+! 2024-02-25 Upcoming Streams. I don't care about seeing things "live".
+! https://letsblock.it/filters/youtube-upcoming-videos
+www.youtube.com##ytd-browse ytd-grid-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="UPCOMING"])
+www.youtube.com##ytd-browse ytd-rich-item-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="UPCOMING"])
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-video-renderer ytd-thumbnail-overlay-time-status-renderer[overlay-style="UPCOMING"]:upward(ytd-item-section-renderer)
+youtube.com##ytd-rich-grid-row, #contents.ytd-rich-grid-row:style(display:contents !important;)
+
+! 2024-02-25 Radio + "Mixes". Go away
+! https://letsblock.it/filters/youtube-mixes
+www.youtube.com##ytd-browse #video-title-link[href*="&start_radio=1"]:upward(ytd-rich-item-renderer)
+www.youtube.com##ytd-search ytd-radio-renderer
+www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-radio-renderer
+www.youtube.com##ytd-player div.videowall-endscreen a[data-is-list=true]
+m.youtube.com##ytm-browse ytm-radio-renderer:upward(ytm-rich-item-renderer)
+m.youtube.com##ytm-search ytm-compact-radio-renderer
+youtube.com##ytd-rich-grid-row, #contents.ytd-rich-grid-row:style(display:contents !important;)
+
+! 2024-02-25 YouTube "Music". Don't care.
+! https://letsblock.it/filters/youtube-music-cleanup
+music.youtube.com##ytmusic-mealbar-promo-renderer
+music.youtube.com##h2 a[href="mixed_for_you"]:upward(ytmusic-carousel-shelf-renderer)
+music.youtube.com##h2 a[href="moods_and_genres"]:upward(ytmusic-carousel-shelf-renderer):not(:matches-path(/moods_and_genres))
+music.youtube.com##yt-formatted-string > .yt-formatted-string:has-text(YouTube Music):upward(.ytmusic-carousel):not(:matches-path(/moods_and_genres))
+music.youtube.com##ytmusic-grid-renderer[grid-type="library"] yt-formatted-string:has-text(YouTube Music):upward(ytmusic-two-row-item-renderer)
+music.youtube.com###contentContainer ytmusic-guide-entry-renderer[play-button-state] .subtitle-group:has-text(YouTube Music):upward(ytmusic-guide-entry-renderer)
+music.youtube.com##.ytmusic-player-page.tab-header-container .tab-header:nth-of-type(3)
+
+
 ! Annoying nagware
 www.bbc.com##.zephr-overlay
 www.bbc.com###zephr-message
@@ -29,4 +57,27 @@ www.youtube.com##ytd-browse ytd-rich-item-renderer:has(#video-title-link[href*="
 www.youtube.com##ytd-search ytd-radio-renderer
 www.youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-radio-renderer
 www.youtube.com##ytd-player div.videowall-endscreen a[data-is-list=true]
+
+! 2023-04-05 BBC News
+www.bbc.co.uk###zephr-message
+www.bbc.co.uk##.b-pw-1280.no-touch.gs-u-box-size.nw-c-leaderboard-ad
+www.bbc.co.uk###topos-component > .dotcom-ad
+www.bbc.co.uk###sticky-leaderboard
+www.bbc.com###zephr-message
+www.bbc.com##.b-pw-1280.no-touch.gs-u-box-size.nw-c-leaderboard-ad
+www.bbc.com###topos-component > .dotcom-ad
+www.bbc.com###sticky-leaderboard
+||*.piano.io
+
+! Debugging if we can stop the dotcom vanity redirect that interrupts browsing.
+! Uses window.location.replace via some convoluted javascript
+#||static.files.bbci.co.uk/core/bundle-website.*.js
+#||www.bbc.com
+||www.bbc.co.uk/userinfo
+
+! 2024-03-09 Sign in with google iframe "popups"
+||accounts.google.com/gsi/iframe/select
+||accounts.google.com/gsi/*
+! Might be a bit harsh, but 3rd party sites seem to use the same DIV that contains the iframe.
+###credential_picker_container
 
